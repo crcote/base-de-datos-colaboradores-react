@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { colaboradoresIniciales} from './colaboradores'
+import { nanoid } from 'nanoid'
 
 const Formulario = ({setErrorForm, setErrorMail}) => {
     const [name, setName] = useState("")
@@ -14,6 +15,18 @@ const Formulario = ({setErrorForm, setErrorMail}) => {
       event.preventDefault()
       validateEmail ();
       validateRegister ();
+      console.log(colaboradores);
+      setColaboradores([
+        ...colaboradores,
+        {
+          id: nanoid(),
+          nombre: name,
+          correo: email,
+          edad: age,
+          cargo: charge,
+          telefono: phone,
+        }
+      ]);
   }
   
     const validateEmail = () =>{ 
