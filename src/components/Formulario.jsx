@@ -1,15 +1,13 @@
 import React from 'react'
 import { useState } from 'react'
-import { colaboradoresIniciales} from './colaboradores'
 import { nanoid } from 'nanoid'
 
-const Formulario = ({setErrorForm, setErrorMail}) => {
+const Formulario = ({setErrorForm, setErrorMail, colaboradores, setColaboradores}) => {
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [age, setAge] = useState("")
     const [charge, setCharge] = useState("")
     const [phone, setPhone] = useState("")
-    const [colaboradores, setColaboradores] = useState(colaboradoresIniciales)
 
     const onSubmit = (event) => {
       event.preventDefault()
