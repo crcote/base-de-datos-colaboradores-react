@@ -10,7 +10,6 @@ const Buscador = ({ colaboradores }) => {
         if (
           colaborador[ColabSearch].toUpperCase().includes(search.toUpperCase())
         ) {
-          // includes realiza la busqueda de lo que se esta buscando
           return colaborador;
         }
       }

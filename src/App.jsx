@@ -14,8 +14,8 @@ function App() {
   return (
     <>
       <div className="PrincipalBox m-5 ">
-        <div className="FirstBox d-flex border border-dark p-5 rounded-5">
-          <div className="formularioBox m-3 ">
+        <div className="FirstBox border border-dark p-5 rounded-5 bg-gradient-info">
+          <div className="formularioBox m-3  ">
             <Formulario
               errorForm={errorForm}
               setErrorForm={setErrorForm}
