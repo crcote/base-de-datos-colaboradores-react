@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Listado = ({ colaboradores }) => {
   return (
@@ -16,7 +18,7 @@ const Listado = ({ colaboradores }) => {
           </thead>
           <tbody>
             {colaboradores.map((e) => (
-              <tr>
+              <tr key={e.id}>
                 <td>{e.nombre}</td>
                 <td>{e.correo}</td>
                 <td>{e.edad}</td>

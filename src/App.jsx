@@ -4,6 +4,7 @@ import Listado from "./components/Listado";
 import Alert from "./components/Alert";
 import { colaboradoresIniciales } from "./components/colaboradores";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Buscador from "./components/Buscador";
 
 function App() {
   const [errorForm, setErrorForm] = useState();
@@ -36,6 +37,7 @@ function App() {
             </div>
           </div>
           <div className="colaboradoresBox">
+            <Buscador colaboradores={colaboradores} />
             <Listado colaboradores={colaboradores} />
           </div>
         </div>
