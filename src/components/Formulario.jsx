@@ -78,6 +78,7 @@ const Formulario = ({
             type="number"
             placeholder="Edad del colaborador"
             value={age}
+            min="0"
             onChange={(event) => setAge(event.target.value)}
           />
           <input
@@ -92,6 +93,7 @@ const Formulario = ({
             type="number"
             placeholder="Teléfono del colaborador"
             value={phone}
+            min="0"
             onChange={(e) => {
               setPhone(e.target.value);
               if (e.target.value.length > 10) {
