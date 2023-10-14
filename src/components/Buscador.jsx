@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Buscador = ({ colaboradores }) => {
+const Buscador = ({ colaboradores, setFilterResult }) => {
   const [search, setSearch] = useState("");
 
   const filterSearch = (search) => {
@@ -14,7 +14,7 @@ const Buscador = ({ colaboradores }) => {
         }
       }
     });
-    return filtrado;
+    setFilterResult(filtrado);
   };
 
   return (

@@ -10,6 +10,15 @@ function App() {
   const [errorForm, setErrorForm] = useState();
   const [errorMail, setErrorMail] = useState();
   const [colaboradores, setColaboradores] = useState(colaboradoresIniciales);
+  const [filterResult, setFilterResult] = useState([]);
+
+  function datos() {
+    if (filterResult.length === 0) {
+      return colaboradores;
+    } else {
+      return filterResult;
+    }
+  }
 
   return (
     <>
@@ -37,8 +46,11 @@ function App() {
             </div>
           </div>
           <div className="colaboradoresBox">
-            <Buscador colaboradores={colaboradores} />
-            <Listado colaboradores={colaboradores} />
+            <Buscador
+              colaboradores={colaboradores}
+              setFilterResult={setFilterResult}
+            />
+            <Listado colaboradores={datos()} />
           </div>
         </div>
       </div>
