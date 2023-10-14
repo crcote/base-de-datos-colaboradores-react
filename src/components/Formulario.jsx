@@ -7,6 +7,7 @@ const Formulario = ({
   setErrorMail,
   colaboradores,
   setColaboradores,
+  setFilterResult,
 }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -16,20 +17,26 @@ const Formulario = ({
 
   const onSubmit = (event) => {
     event.preventDefault();
-    validateEmail();
-    validateRegister();
+    if (!validateRegister() || !validateEmail()  )
+      return;
     console.log(colaboradores);
     setColaboradores([
       ...colaboradores,
       {
         id: nanoid(),
-        nombre: name,
-        correo: email,
-        edad: age,
-        cargo: charge,
-        telefono: phone,
+        nombre: name.trim(),
+        correo: email.trim(),
+        edad: age.trim(),
+        cargo: charge.trim(),
+        telefono: phone.trim(),
       },
     ]);
+    setFilterResult([]);
+    setName("");
+    setEmail("");
+    setAge("");
+    setCharge("");
+    setPhone("");
   };
 
   const validateEmail = () => {
@@ -40,18 +47,20 @@ const Formulario = ({
     ) {
       console.log("malisimo");
       setErrorMail(true);
-      return;
+      return false;
     }
     setErrorMail(false);
+    return true;
   };
 
   const validateRegister = () => {
     if (name == "" || email == "" || age == "" || charge == "" || phone == "") {
       console.log("Todos los campos son obligatorios");
       setErrorForm(true);
-      return;
+      return false;
     }
     setErrorForm(false);
+    return true;
   };
 
   return (

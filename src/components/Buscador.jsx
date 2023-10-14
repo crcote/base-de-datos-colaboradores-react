@@ -1,20 +1,22 @@
 import { useState } from "react";
 
-const Buscador = ({ colaboradores, setFilterResult }) => {
-  const [search, setSearch] = useState("");
+const Buscador = ({ colaboradores, setFilterResult,search,setSearch }) => {
 
   const filterSearch = (search) => {
-    let filtrado = colaboradores.filter((colaborador) => {
-      for (let ColabSearch in colaborador) {
-        //console.log(colaborador[ColabSearch]);
-        if (
-          colaborador[ColabSearch].toUpperCase().includes(search.toUpperCase())
-        ) {
-          return colaborador;
+    if (search.trim()!= "") {      
+      let filtrado = colaboradores.filter((colaborador) => {
+        for (let ColabSearch in colaborador) {
+          if (colaborador[ColabSearch].toUpperCase().includes(search.toUpperCase())) {
+            return colaborador;
+          }
         }
-      }
-    });
-    setFilterResult(filtrado);
+      });
+      setFilterResult(filtrado);
+      
+    }else{
+      setFilterResult(colaboradores);
+    }
+    
   };
 
   return (
@@ -28,7 +30,7 @@ const Buscador = ({ colaboradores, setFilterResult }) => {
           // onChange={(event) => setSearch(event.target.value)}
           onChange={(event) => {
             setSearch(event.target.value);
-            console.log(filterSearch(search));
+            filterSearch(event.target.value);
           }}
         />
       </div>

@@ -11,10 +11,15 @@ function App() {
   const [errorMail, setErrorMail] = useState();
   const [colaboradores, setColaboradores] = useState(colaboradoresIniciales);
   const [filterResult, setFilterResult] = useState([]);
+  const [search, setSearch] = useState("");
 
   function datos() {
     if (filterResult.length === 0) {
-      return colaboradores;
+      if (search!="") {
+        return filterResult;
+      }else{
+        return colaboradores;
+      }
     } else {
       return filterResult;
     }
@@ -32,6 +37,7 @@ function App() {
               setErrorMail={setErrorMail}
               colaboradores={colaboradores}
               setColaboradores={setColaboradores}
+              setFilterResult = {setFilterResult}
             />
             <div className="messageAlert">
               {errorForm ? (
@@ -49,6 +55,8 @@ function App() {
             <Buscador
               colaboradores={colaboradores}
               setFilterResult={setFilterResult}
+              search={search}
+              setSearch={setSearch}
             />
             <Listado colaboradores={datos()} />
           </div>
